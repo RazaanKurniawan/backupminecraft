@@ -17,8 +17,8 @@ timestamps:
   mute: 0
   jail: 0
   onlinejail: 0
-  logout: 1790777235131
-  login: 1790777115185
+  logout: 1790781107137
+  login: 1790780324275
 money: '0'
 last-account-name: Helios6212
 lastlocation:
@@ -32,8 +32,17 @@ lastlocation:
 logoutlocation:
   world: 660c0072-e29b-4866-bea0-7e0e1a168690
   world-name: world
-  x: -4853.589217338443
-  y: 100.0
-  z: -5927.442633166845
-  yaw: 17.813735961914062
-  pitch: 5.305086135864258
+  x: -4862.699999988079
+  y: 128.0
+  z: -5795.062648035482
+  yaw: 23.4615535736084
+  pitch: 31.151451110839844
+homes:
+  home:
+    world: 660c0072-e29b-4866-bea0-7e0e1a168690
+    world-name: world
+    x: -4832.2422871234885
+    y: 118.0
+    z: -5860.606943561963
+    yaw: 135.41513061523438
+    pitch: -3.2754669189453125
