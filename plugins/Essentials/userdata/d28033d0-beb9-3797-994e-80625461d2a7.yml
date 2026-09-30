@@ -1,0 +1,39 @@
+teleportenabled: true
+teleportauto: false
+godmode: false
+flymode: false
+muted: false
+jailed: false
+ip-address: 180.252.167.145
+afk: false
+socialspy: false
+npc: false
+powertoolsenabled: true
+accepting-pay: true
+baltop-exempt: false
+timestamps:
+  lastteleport: 1790526786011
+  lastheal: 0
+  mute: 0
+  jail: 0
+  onlinejail: 0
+  logout: 1790777235131
+  login: 1790777115185
+money: '0'
+last-account-name: Helios6212
+lastlocation:
+  world: 660c0072-e29b-4866-bea0-7e0e1a168690
+  world-name: world
+  x: 1380.300000011921
+  y: 60.0
+  z: -2028.45970487101
+  yaw: -76.303466796875
+  pitch: 18.228179931640625
+logoutlocation:
+  world: 660c0072-e29b-4866-bea0-7e0e1a168690
+  world-name: world
+  x: -4853.589217338443
+  y: 100.0
+  z: -5927.442633166845
+  yaw: 17.813735961914062
+  pitch: 5.305086135864258

@@ -1,0 +1,43 @@
+# >>>>>>>>>>>>>>>>>>> 🥳🎆 Patreon License File 🥳🎆 <<<<<<<<<<<<<<<<<<<<<<
+# >>>>>>>>>>>>>>>>> https://www.patreon.com/sirmeliodaz <<<<<<<<<<<<<<<<<<<<<
+# Thanks for supporting the development of this project on Patreon ☺️!
+
+# This file is for Patreon Members that have purchased a subscription only!
+# If you are not a Paid Patreon Member, this file will not work for you.
+
+# Here you must enter your Patreon email that Purchased the subscription for SilkySpawnersX.
+# If you do not enter an email, the software will run in trial mode.
+# Be sure to type your credentials right, else your credentials will not be recognized.
+# Once you have entered your Patreon email, restart the server once and your license key should be automatically issued.
+patreon-email: sampleEmail@domain.com
+#
+#
+# Here you must set your SilkyspawnersX password. ⚠️ This is NOT your Patreon password! ⚠️
+# This password is set by you the first time you run SilkySpawnersX with a valid Patreon email.
+# If your email or password get compromised, you can request a reset of your license-record on Patreon or Discord.
+silkySpawnersX_Password: YourSecurePasswordHere
+#
+#
+# This value is automatically set for user context only.
+# Changing this value will have no impact for managing your account.
+issued-license-key: a856138d69068746b86c6dc61bcd35bd1487b123fa6dc455e175f8a52ab91d82
+#
+# This value is for client context only and is automatically managed by the license server to keep track of your active licenses.
+# Changing this value will have no impact for managing your account.
+license-records: []
+#
+# ❕Each email can have 3 active licenses at the same time, each bound to a specific server❕
+# meaning you can run SilkySpawnersX on up to 3 different servers simultaneously with the same Patreon email.
+# If for whateever reason you change server hardware or IP, a new license will be issued and added to your license-record.
+# If your record already has 3 active licenses, a new 4th server will have denied access until you remove one of the existing licenses.
+# You can remove record of your licenses by using command '/silkyspawnersx delete_license_records', or by contacting me on Patreon or Discord.
+# If you want to run SilkySpawnersX on more than 3 servers, please contact me.
+#
+# ⚠️ Important Notes ⚠️
+# ❗️ Make sure to keep this file private and do not share your credentials with anyone else ❗️
+# Your credentials are valid for as long as your Patreon subscription is active.
+# If your subscription expires or is cancelled, the license will become invalid and the software will run in trial mode.
+#
+# If for whatever reason you want to change your password, contact me on Patreon or Discord to reset your license-record.
+# You can contact me on Patreon or on Discord at https://discord.com/invite/zRq7zVgKKR.
+# You can request a license-record reset at any time, but please do not abuse this system, otherwiise I will refund you and cancel your subscription.

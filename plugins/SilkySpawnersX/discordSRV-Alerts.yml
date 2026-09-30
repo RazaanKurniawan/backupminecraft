@@ -1,0 +1,227 @@
+# <<<<<<<<<<<<<<<<<<<<<<<< ⚠️ These alerts are just examples of what you can do with the SilkySpawnersX API ⚠️ >>>>>>>>>>>>>>>>>>>>>>>>
+# If you want to use these alerts, you have to place them in your DiscordSRV-Alerts.yml file.
+# If you want the API specific endpoints, you can contact me on Discord
+# ❕ Please note:
+# These alerts are fully customizable. You can add or remove fields as needed.
+# The examples below are samples to demonstrate what’s possible with the API endpoints.
+# Read all the API documentation at: https://github.com/nyannetwork-dev/SilkySpawnersX-Async-API
+#
+#
+# 📦 Place Spawners ON PLACE 📦
+- Trigger: com.silkyspawnersx.api.event.SpawnerPlaceEvent
+  Enabled: true
+  Channel: "yourServerChannelID"
+  Conditions:
+    - "#event.result.isSuccess()"
+    # Ignore ops to keep them stealthy
+    - "#event.isOperator() != true"
+    # Ignore creative mode to reduce alert spam (null-safe)
+    - "#event.getGameMode() != null && #event.getGameMode().name() != 'CREATIVE'"
+    # Ignore already mined spawners to prevent alert spam
+    - "!#event.wasSpawnerAlreadyTagged()"
+  Embed:
+    Enabled: true
+    Title: "${#event.result.isSuccess() ? '✨ Spawner Placed! ✨' : '❌ Spawner Place Failed 😢'}"
+    Color: "#facc15"
+    ThumbnailUrl: "https://minecraft.wiki/images/Active_Trial_Spawner_JE4_BE3.png?d1d81"
+    Author:
+      ImageUrl: "{embedavatarurl}"
+      Name: "${#event.player != null ? #event.player.name : 'Console/System'} ${#event.result.isSuccess() ? 'placed' : 'attempted to place'} a spawner"
+    Description: |
+      🧩 **Spawner:** ${#event.spawnerType != null ? #event.spawnerType.name().toLowerCase().replace('_', ' ') : 'Empty Spawner'}
+      🧾 **Reason:** ${#event.reason != null ? #event.reason : 'None'}
+      🏷️ **Tag Applied:** ${#event.wasTagApplied() ? 'Yes' : 'No'}
+    Fields:
+      - "🗺️ Location;${#event.location != null ? 'X: ' + #event.location.blockX + ', Y: ' + #event.location.blockY + ', Z: ' + #event.location.blockZ : 'Unknown'};false"
+      - "📋 Item Already Tagged;${#event.wasSpawnerAlreadyTagged() ? 'Yes' : 'No'};false"
+      - "🎮 Game Mode;${#event.getGameMode() != null ? #event.getGameMode().name().toLowerCase() : 'Unknown'};true"
+      - "🌍 World;${#event.worldName != null ? #event.worldName : (#event.location != null ? #event.location.world.name : 'Unknown')};true"
+    Footer:
+      Text: "🔔 Spawner Place • ${#event.result.name()}"
+      IconUrl: "https://mc-heads.net/head/${#event.spawnerType != null ? #event.spawnerType.name().toLowerCase() : '4c81b2211bf04aaaa2cc6f54576604f0'}/100.png"
+    Timestamp: true
+
+# ⛏️ Spawner Break Event
+- Trigger: com.silkyspawnersx.api.event.SpawnerBreakEvent
+  Enabled: true
+  Channel: "yourServerChannelID"
+  Conditions:
+    # Uncomment this line bellow to only alert on successful spawner breaks
+    #  - "#event.getResult().isSuccess()"
+    # Ignore already mined spawners to prevent alert spam
+    - "!#event.wasSpawnerAlreadyTagged()"
+    # Ignore missing permission break events to prevent spam
+    - "#event.context['reason'] != 'missing-permission'"
+    # Remove this line if you want operators to also trigger this alert
+    - "#event.context['is-operator'] == false"
+
+  Embed:
+    Enabled: true
+    Title:
+      Text: "${#event.getResult().isSuccess() ? '✨ Spawner Success! ✨' : '❌ Spawner Failure 😢'}"
+    Color: "#8b5cf6"
+    ThumbnailUrl: "https://mc-heads.net/head/${#event.spawnerType != null ? #event.spawnerType.name().toLowerCase() : '4c81b2211bf04aaaa2cc6f54576604f0'}/100.png"
+    ImageUrl: "https://i.postimg.cc/qkVwbdRP/A-Minecraft-style-di.png"
+    Author:
+      ImageUrl: "{embedavatarurl}"
+      Name: "${#event.player != null ? #event.player.name : 'Console/System'} just found a mob spawner! 👾"
+    Description: |
+      🧩 **Spawner:** ${#event.spawnerType != null ? #event.spawnerType.name().toLowerCase().replace('_', ' ') : 'Empty Spawner'}
+      📦 **Quantity:** ${#event.quantity}
+    Fields:
+      - "🌍 World;${#event.context['world'] != null ? #event.context['world'] : (#event.location != null ? #event.location.world.name : 'Unknown')};true"
+      - "🗺️ Location;${#event.location != null ? 'X: ❔'  + ', Y: ' + #event.location.blockY + ', Z: ❔': 'Unknown'};true"
+      - "📋 Reason;${#event.context['reason'] != null ? #event.context['reason'].replace('-', ' ') : 'No extra metadata'};false"
+      - "📊 Drop Rate;${#event.context['drop-rate'] != null ? #event.context['drop-rate'] + '%' : 'N/A'};true"
+      - "🧬 Base Rate;${#event.context['base-rate'] != null ? #event.context['base-rate'] : 'N/A'};true"
+      - "✨ Bonus;${#event.context['drop-bonus'] != null ? #event.context['drop-bonus'] : 'N/A'};true"
+      - "🎲 Roll;${#event.context['roll'] != null ? T(java.lang.String).format('%.2f', #event.context['roll']) : 'N/A'};true"
+      - "🧪 XP Awarded;${#event.context['xp-awarded'] != null ? #event.context['xp-awarded'] : 'N/A'};true"
+      - "🛠️ Held Tool;${#event.context['held-tool-name'] != null ? #event.context['held-tool-name'] : 'N/A'};true"
+      - "🧰 Eligible Tools;${#event.context['eligible-tools'] != null ? #event.context['eligible-tools'] : 'N/A'};false"
+      - "🪄 Eligible Enchantments;${#event.context['eligible-enchantments'] != null ? #event.context['eligible-enchantments'] : 'N/A'};false"
+    Footer:
+      Text: "🔔 Spawner Event • ${#event.result.name()}"
+      IconUrl: "https://mc-heads.net/head/${#event.spawnerType != null ? #event.spawnerType.name().toLowerCase() : '4c81b2211bf04aaaa2cc6f54576604f0'}/100.png"
+    Timestamp: true
+
+# 🧬 Transform Alert 🧬
+- Trigger: com.silkyspawnersx.api.event.SpawnerTransformEvent
+  Channel: "yourServerChannelID"
+  Conditions:
+    # Only alert on successful transforms. Remove this line to alert on all attempts, but not recommended to reduce alert spam.
+    - "#event.getResult().isSuccess()"
+    # Ignore tagged spawner. Can be helpful to prevent spam from users. Remove this line if you dont want to send alerts reguardless of tag.
+    - "#event.context['is-spawner-tagged'] == false"
+  Embed:
+    Enabled: true
+    Title:
+      Text: "${#event.getResult().isSuccess() ? '🔁 Spawner Transformed!' : '⚠️ Transform Failed'}"
+    Color: "#ec4899"
+    ThumbnailUrl: "https://mc-heads.net/head/${#event.entityFromEgg != null ? #event.entityFromEgg.name().toLowerCase() : '4c81b2211bf04aaaa2cc6f54576604f0'}/100.png"
+    ImageUrl: "https://i.postimg.cc/Y00J88dW/A-bright-Minecraft-s.png"
+    Author:
+      ImageUrl: "{embedavatarurl}"
+      Name: "${#event.player != null ? #event.player.name : 'Console/System'} \
+        ${#event.result.isSuccess() ? '🟢 transformed' : '🔴 failed to transform'} \
+        ${#event.context['order-amount'] > 1 ? #event.context['order-amount'] + ' spawners' : 'a spawner'}"
+
+    Description: |
+      🧬 **From:** ${#event.entityFromSpawner != null ? #event.entityFromSpawner.name().toLowerCase().replace('_', ' ') : 'empty spawner'}
+      🪄 **To:** ${#event.entityFromEgg != null ? #event.entityFromEgg.name().toLowerCase().replace('_', ' ') : 'empty spawner'}
+      💸 **Price:** ${T(java.lang.String).format('%.2f', #event.finalPrice)}
+    Fields:
+      - "🗺️ Location;${#event.location != null ? 'X: ' + #event.location.blockX + ', Y: ' + #event.location.blockY + ', Z: ' + #event.location.blockZ : 'Unknown'};false"
+      - "🧾 Reason;${#event.context.containsKey('reason') ? #event.context['reason'].replace('-', ' ') : (#event.getResult().isSuccess() ? 'success' : 'failure')};false"
+      - "💵 Charged;${#event.context['was-player-charged'] ? 'yes' : 'No'};true"
+      - "📊 Base Price;${#event.context.containsKey('base-price') ? T(java.lang.String).format('%.2f', #event.context['base-price']) : 'N/A'};true"
+      - "➕ Modifier;${#event.context.containsKey('modifier') ? T(java.lang.String).format('%.2f', #event.context['modifier']) : 'N/A'};true"
+      - "💳 Remaining Balance;${#event.context.containsKey('remaining-balance') ? #event.context['remaining-balance'] : 'N/A'};true"
+    Footer:
+      Text: "🔔 Spawner Transform • ${#event.result.name()}"
+      IconUrl: "https://minecraft.wiki/images/Mob_Spawner_%28Dungeons%29.png?b7d68"
+    Timestamp: true
+
+  # 🧪 Transform Command Alert 🧪
+- Trigger: com.silkyspawnersx.api.event.SpawnerTransformCommandEvent
+  Channel: "yourServerChannelID"
+  Conditions:
+    # Only alert on successful transforms (optional)
+    - "#event.result.isSuccess()"
+    # Ignore tagged spawners (optional)
+    - "#event.context['is-spawner-tagged'] == false"
+  Embed:
+    Enabled: true
+    Title:
+      Text: "${#event.result.isSuccess() ? '🔁 Spawner Transformed!' : '⚠️ Transform Failed'}"
+    Color: "#ec4899"
+    ThumbnailUrl: "https://mc-heads.net/head/${#event.requestedEntityType != null ? #event.requestedEntityType.name().toLowerCase() : '4c81b2211bf04aaaa2cc6f54576604f0'}/100.png"
+    ImageUrl: "https://i.postimg.cc/Y00J88dW/A-bright-Minecraft-s.png"
+    Author:
+      ImageUrl: "{embedavatarurl}"
+      Name: "${#event.player != null ? #event.player.name : 'Console/System'} ${#event.result.isSuccess() ? '🟢 transformed' : '🔴 failed to transform'} a spawner"
+    Description: |
+      🧬 **From:** ${#event.entityTypeFromHeldSpawner != null ? #event.entityTypeFromHeldSpawner.name().toLowerCase().replace('_',' ') : 'empty spawner'}
+      🪄 **To:** ${#event.requestedEntityType != null ? #event.requestedEntityType.name().toLowerCase().replace('_',' ') : 'empty spawner'}
+      💸 **Price:** ${T(java.lang.String).format('%.2f', #event.finalPrice)}
+    Fields:
+      - "🗺️ Location;${#event.location != null ? 'X: ' + #event.location.blockX + ', Y: ' + #event.location.blockY + ', Z: ' + #event.location.blockZ : 'Unknown'};false"
+      - "🌍 World;${#event.context.containsKey('world-name') ? #event.context['world-name'] : 'Unknown'};true"
+      - "🧾 Reason;${#event.context.containsKey('reason') ? #event.context['reason'].replace('-', ' ') : (#event.result.isSuccess() ? 'success' : 'failure')};false"
+      - "💵 Charged;${#event.context['was-player-charged'] ? 'yes' : 'no'};true"
+      - "📊 Base Price;${#event.context.containsKey('base-price') ? T(java.lang.String).format('%.2f', #event.context['base-price']) : 'N/A'};true"
+      - "➕ Modifier;${#event.context.containsKey('modifier') ? T(java.lang.String).format('%.2f', #event.context['modifier']) : 'N/A'};true"
+      - "💳 Remaining Balance;${#event.context.containsKey('remaining-balance') ? #event.context['remaining-balance'] : 'N/A'};true"
+      - "🧍 Operator;${#event.context['is-operator'] ? 'yes' : 'no'};true"
+      - "🎨 Creative Mode;${#event.context['is-creative'] ? 'yes' : 'no'};true"
+    Footer:
+      Text: "🔔 Spawner Transform • ${#event.result.name()}"
+      IconUrl: "https://minecraft.wiki/images/Mob_Spawner_%28Dungeons%29.png?b7d68"
+    Timestamp: true
+
+# 💥 Explosion Spawner Drop 💥
+- Trigger: com.silkyspawnersx.api.event.SpawnerExplosionEvent
+  Enabled: true
+  Channel: "yourServerChannelID"
+  Conditions:
+    # Uncomment this line bellow to only alert on successful explosion drops
+    #  - "#event.result.isSuccess()"
+    # Remove this line to only alert on tagged exploded spawners
+    - "#event.context['was-spawner-already-tagged'] == false"
+  Embed:
+    Enabled: true
+    Title:
+      Text: "${#event.getResult().isSuccess() ? '💣 Spawner Explosion Drop!' : '⚠️ Explosion Drop Failed'}"
+    Color: "#dc2626"
+    ThumbnailUrl: "https://mc-heads.net/head/${#event.spawnerType != null ? #event.spawnerType.name().toLowerCase() : '4c81b2211bf04aaaa2cc6f54576604f0'}/100.png"
+    ImageUrl: "https://i.postimg.cc/0jzgkcRm/A-dramatic-Minecraft.png"
+    Author:
+      ImageUrl: "https://i.postimg.cc/0jzgkcRm/A-dramatic-Minecraft.png"
+      Name: "💥 ${#event.cause} destroyed a spawner! 💥"
+    Description: |
+      🧩 **Spawner:** ${#event.spawnerType != null ? #event.spawnerType.name().toLowerCase().replace('_', ' ') : 'Empty Spawner'}
+      📦 **Quantity:** ${#event.quantity}
+    Fields:
+      - "🗺️ Location;${#event.location != null ? 'X: ' + #event.location.blockX + ', Y: ' + #event.location.blockY + ', Z: ' + #event.location.blockZ : 'Unknown'};false"
+      - "🧨 Trigger;${#event.cause};true"
+      - "📋 Reason;${#event.context != null && #event.context.containsKey('reason') ? #event.context['reason'].replace('-', ' ') : 'N/A'};false"
+      - "📊 Drop Rate;${T(java.lang.String).format('%.2f%%', #event.context['drop-rate'])};true"
+      - "🎲 Roll;${T(java.lang.String).format('%.2f', #event.context['roll'])};true"
+      - "🌍 World;${#event.context['world-name']};true"
+    Footer:
+      Text: "🔔 Spawner Explosion • ${#event.result.name()}"
+      IconUrl: "https://minecraft.wiki/images/Mob_Spawner_%28Dungeons%29.png?b7d68"
+    Timestamp: true
+
+# 🛠️ Crafting Spawner Alert 🛠️
+- Trigger: com.silkyspawnersx.api.event.SpawnerCraftEvent
+  Enabled: true
+  Channel: "yourServerChannelID"
+  Conditions:
+    # This line bellow is to alert on successful crafts only (remove to alert on attempts).
+    - "#event.getResult().isSuccess()"
+  Embed:
+    Enabled: true
+    Title:
+      Text: "${#event.getResult().isSuccess() ? '🛠️ Spawner Crafted!' : '⚠️ Spawner Craft Failed'}"
+    Color: "#10b981"
+    ThumbnailUrl: "https://mc-heads.net/head/${#event.spawnerType != null ? #event.spawnerType.name().toLowerCase() : '4c81b2211bf04aaaa2cc6f54576604f0'}/100.png"
+    ImageUrl: "https://8upload.com/preview/e4cdb3d04254d6cf/High-detail_pixel-ar.png"
+    Author:
+      ImageUrl: "{embedavatarurl}"
+      Name: "${#event.player != null ? #event.player.name : 'Console/System'} just ${#event.getResult().isSuccess() ? 'crafted' : 'attempted to craft'} a spawner! 🧰"
+    Description: |
+      🧩 **Spawner:** ${#event.spawnerType != null ? #event.spawnerType.name().toLowerCase().replace('_', ' ') : 'Empty Spawner'}
+      📦 **Quantity:** ${#event.quantity}
+      💳 **Charged:** ${#event.wasCharged() ? 'Yes' : 'No'}
+      💹 **Modifier:** ${#event.context['price-modifier']}
+      💰 **Total Charge:** ${T(java.lang.String).format('%.2f', #event.totalCharge)}
+    Fields:
+      - "🗺️ Location;${#event.location != null ? 'X: ' + #event.location.blockX + ', Y: ' + #event.location.blockY + ', Z: ' + #event.location.blockZ : 'Unknown'};false"
+      - "💵 Unit Price;${T(java.lang.String).format('%.2f', #event.context['unit-price'])};true"
+      - "🏦 Remaining Balance;${#event.context['remaining-balance']};true"
+      - "🌍 World;${#event.context['world-name']};true"
+    Footer:
+      Text: "🔔 Spawner Craft • ${#event.result.name()}"
+      IconUrl: "https://mc-heads.net/head/${#event.spawnerType != null ? #event.spawnerType.name().toLowerCase() : '4c81b2211bf04aaaa2cc6f54576604f0'}/100.png"
+    Timestamp: true

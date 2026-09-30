@@ -1,0 +1,20 @@
+# Minecraft Server gitignore
+.cache/
+cache/
+libraries/
+versions/
+.paper/cache/
+.paper/download-cache/
+logs/
+*.log
+*.log.gz
+crash-reports/
+
+# Temporary / Profiler files
+plugins/spark/tmp/
+*.tmp
+*.jfr
+*.lck
+
+# Optional large binaries (kept if < 100MB)
+# server.jar

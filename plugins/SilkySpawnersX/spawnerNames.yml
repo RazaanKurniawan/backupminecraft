@@ -1,0 +1,533 @@
+# <<<<<<<<<<<<<<<<<<<<<<<<<<<<<< 💎💎💎💎💎 This config is for Premium Users only! 💎💎💎💎💎 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+#
+# Changing these values will have no effect if you are not a premium user.
+#
+# ✏️ Names most be formatted like bukkit enums, e.g. "zombie", "iron_golem", "cave_spider".
+# ✖️ If you misspell a name or don't use cammel_case, the spawner will not be renamed and will use the default name instead.
+# 🌈 You can use color codes in the names and lores,
+# 🎨 Minimessage  compatible 🎨! See guides on how to use minimessage, or take a look at the "zombie" entry in this file.
+#     Visit the official website: https://webui.advntr.dev to test your minimessage formating and colors in real time!
+# ⚠️ To save resources and prevent lag, I limited the max characters per line to 150, and the max lines to 5.
+#     if you think this limit is too low, please contact me and I will consider increasing it in a future update.
+spawner-names:
+  allay:
+    name: "&bAllay Spawner ✨"
+    lore:
+      - "&aSpawns &ballays&7 that collect dropped items for you."
+      - "&aGive one an item and it searches nearby for matches."
+
+  armadillo:
+    name: "&6Armadillo Spawner 🛡️"
+    lore:
+      - "&aSpawns &6armadillos&7 found in warm, dry biomes."
+      - "&aThey roll up when threatened and drop scutes."
+
+  axolotl:
+    name: "&dAxolotl Spawner 🐟"
+    lore:
+      - "&aSpawns &daxolotls&7 that help fight hostile water mobs."
+      - "&aThey need nearby water to stay healthy."
+
+  bat:
+    name: "&8Bat Spawner 🦇"
+    lore:
+      - "&eSpawns &8bats&7, ambient cave mobs that do not attack."
+      - "&eUseful for adding atmosphere to dark areas."
+
+  bee:
+    name: "&eBee Spawner 🐝"
+    lore:
+      - "&aSpawns &ebees&7 that pollinate crops and flowers."
+      - "&eThey sting when provoked or hives are broken."
+
+  blaze:
+    name: "&6Blaze Spawner 🔥"
+    lore:
+      - "&cSpawns &6blazes&7, ranged nether mobs that shoot fire."
+      - "&cBlaze rods are key for brewing and end progression."
+
+  bogged:
+    name: "&2Bogged Spawner ☠️"
+    lore:
+      - "&cSpawns &2bogged&7, skeleton variants that inflict poison."
+      - "&cBest handled at range with good armor."
+
+  breeze:
+    name: "&bBreeze Spawner 🌬️"
+    lore:
+      - "&cSpawns &bbreezes&7, agile trial chamber attackers."
+      - "&cTheir wind projectiles knock players back."
+
+  camel:
+    name: "&eCamel Spawner 🐪"
+    lore:
+      - "&aSpawns &ecamels&7, tall mounts for two riders."
+      - "&aThey step over small gaps and take less fall damage."
+
+  camel_husk:
+    name: "&eCamel Husk Spawner 🐪☠️"
+    lore:
+      - "&cSpawns husks riding &ecamels&7 in desert battles."
+      - "&cDesigned for tougher custom encounters."
+
+  cat:
+    name: "&aCat Spawner 🐱"
+    lore:
+      - "&aSpawns &acats&7, tamable pets that scare creepers."
+      - "&aTame them with fish to follow and sit on beds."
+
+  cave_spider:
+    name: "&3Cave Spider Spawner 🕷️"
+    lore:
+      - "&cSpawns &3cave spiders&7 with poisonous bites."
+      - "&cMilk cures the poison after fights."
+
+  chicken:
+    name: "&fChicken Spawner 🐔"
+    lore:
+      - "&aSpawns &fchickens&7 that lay eggs over time."
+      - "&aGood for early food and feather farms."
+
+  cod:
+    name: "&bCod Spawner 🐟"
+    lore:
+      - "&aSpawns &bcod&7, common ocean fish for food."
+      - "&aWorks well with automatic fishing systems."
+
+  copper_golem:
+    name: "&6Copper Golem Spawner ⚙️"
+    lore:
+      - "&aSpawns &6copper golems&7 used in custom content."
+      - "&eIdeal for redstone-themed maps and datapacks."
+
+  cow:
+    name: "&6Cow Spawner 🐄"
+    lore:
+      - "&aSpawns &6cows&7 that provide leather, beef, and milk."
+      - "&aBreed with wheat for a steady resource supply."
+
+  creaking:
+    name: "&8Creaking Spawner 🪵"
+    lore:
+      - "&cSpawns &8creakings&7, slow but strong wooden foes."
+      - "&cBest fought at range or with high armor."
+
+  creeper:
+    name: "&aCreeper Spawner 💣"
+    lore:
+      - "&cSpawns &acreepers&7, silent mobs that explode on contact."
+      - "&cKeep them away from builds and storage."
+
+  dolphin:
+    name: "&bDolphin Spawner 🐬"
+    lore:
+      - "&aSpawns &bdolphins&7 that boost your swim speed."
+      - "&aFeeding them fish can lead you to structures."
+
+  donkey:
+    name: "&6Donkey Spawner 🫏"
+    lore:
+      - "&aSpawns &6donkeys&7, pack animals with chest storage."
+      - "&aGreat for moving items early in the game."
+
+  drowned:
+    name: "&3Drowned Spawner 🌊"
+    lore:
+      - "&cSpawns &3drowned&7, underwater undead that roam rivers."
+      - "&cSome carry tridents or nautilus shells."
+
+  elder_guardian:
+    name: "&3Elder Guardian Spawner 🛡️"
+    lore:
+      - "&cSpawns &3elder guardians&7, bosses of ocean monuments."
+      - "&cThey inflict mining fatigue and heavy damage."
+
+  ender_dragon:
+    name: "&5Ender Dragon Spawner 🐉"
+    lore:
+      - "&cSpawns the &5Ender Dragon&7 for end-game fights."
+      - "&cUse in controlled arenas to avoid damage to builds."
+
+  enderman:
+    name: "&5Enderman Spawner 🌀"
+    lore:
+      - "&eSpawns &5endermen&7, neutral until stared at."
+      - "&eEnder pearls from them are key to reaching the End."
+
+  endermite:
+    name: "&5Endermite Spawner 🐜"
+    lore:
+      - "&cSpawns &5endermites&7, small hostile end creatures."
+      - "&cOften used in advanced enderman farms."
+
+  evoker:
+    name: "&dEvoker Spawner ✨"
+    lore:
+      - "&cSpawns &devokers&7, spellcasting illagers from mansions."
+      - "&cThey summon vexes and fangs in combat."
+
+  fox:
+    name: "&6Fox Spawner 🦊"
+    lore:
+      - "&aSpawns &6foxes&7, quick nocturnal hunters."
+      - "&eThey can carry items and hunt small mobs."
+
+  frog:
+    name: "&aFrog Spawner 🐸"
+    lore:
+      - "&aSpawns &afrogs&7 that live near water and swamps."
+      - "&aThey eat small magma cubes to make froglights."
+
+  ghast:
+    name: "&fGhast Spawner 👻"
+    lore:
+      - "&cSpawns &fghasts&7, large flying nether mobs."
+      - "&cTheir fireballs can destroy unprotected builds."
+
+  glow_squid:
+    name: "&bGlow Squid Spawner 💡"
+    lore:
+      - "&aSpawns &bglow squids&7 that emit a soft glow."
+      - "&aGlow ink is useful for highlighted text and signs."
+
+  goat:
+    name: "&fGoat Spawner 🐐"
+    lore:
+      - "&eSpawns &fgoats&7 that can ram players off cliffs."
+      - "&eGoat horns play loud sounds found in mountains."
+
+  guardian:
+    name: "&3Guardian Spawner 🐟"
+    lore:
+      - "&cSpawns &3guardians&7 around ocean monuments."
+      - "&cTheir beams deal damage through water."
+
+  happy_ghast:
+    name: "&fHappy Ghast Spawner 😄"
+    lore:
+      - "&eSpawns &fhappy ghasts&7 for peaceful scenarios."
+      - "&eBest used in custom events and themed areas."
+
+  hoglin:
+    name: "&cHoglin Spawner 🐗"
+    lore:
+      - "&cSpawns &choglins&7, strong nether beasts."
+      - "&cWarped fungi can drive them away."
+
+  horse:
+    name: "&6Horse Spawner 🐎"
+    lore:
+      - "&aSpawns &6horses&7, fast overworld mounts."
+      - "&aSpeed and jump height vary per horse."
+
+  husk:
+    name: "&eHusk Spawner 🧟"
+    lore:
+      - "&cSpawns &ehusks&7, desert zombie variants."
+      - "&cTheir attacks inflict hunger and they ignore sunlight."
+
+  iron_golem:
+    name: "&7Iron Golem Spawner 🛡️"
+    lore:
+      - "&aSpawns &7iron golems&7, powerful village defenders."
+      - "&aThey attack hostile mobs that threaten villagers."
+
+  llama:
+    name: "&fLlama Spawner 🦙"
+    lore:
+      - "&aSpawns &fllamas&7 that can carry chests."
+      - "&eThey form caravans and spit at threats."
+
+  magma_cube:
+    name: "&cMagma Cube Spawner 🔥"
+    lore:
+      - "&cSpawns &cmagma cubes&7 in the nether."
+      - "&cThey split into smaller cubes when killed."
+
+  mooshroom:
+    name: "&cMooshroom Spawner 🍄"
+    lore:
+      - "&aSpawns &cmooshrooms&7 on mycelium islands."
+      - "&aBowls collect stew instead of milk."
+
+  mule:
+    name: "&6Mule Spawner 🧺"
+    lore:
+      - "&aSpawns &6mules&7, hybrid mounts with storage."
+      - "&aThey combine speed with good carrying capacity."
+
+  nautilus:
+    name: "&3Nautilus Spawner 🐚"
+    lore:
+      - "&eSpawns &3nautilus-themed&7 mobs for custom oceans."
+      - "&ePairs well with drowned and guardian setups."
+
+  ocelot:
+    name: "&eOcelot Spawner 🐆"
+    lore:
+      - "&aSpawns &eocelots&7, shy jungle cats."
+      - "&eThey help reduce creeper spawns nearby."
+
+  panda:
+    name: "&aPanda Spawner 🐼"
+    lore:
+      - "&aSpawns &apandas&7 that live in bamboo forests."
+      - "&aPersonalities affect how each panda behaves."
+
+  parched:
+    name: "&eParched Spawner ☀️"
+    lore:
+      - "&cSpawns &eparched&7 variants for harsh dry biomes."
+      - "&cIntended for challenging custom encounters."
+
+  parrot:
+    name: "&cParrot Spawner 🦜"
+    lore:
+      - "&aSpawns &cparrots&7, colorful flying pets."
+      - "&eThey mimic nearby mob sounds."
+
+  phantom:
+    name: "&9Phantom Spawner 🦇"
+    lore:
+      - "&cSpawns &9phantoms&7 that attack sleepless players."
+      - "&cThey drop membranes used to repair elytra."
+
+  pig:
+    name: "&dPig Spawner 🐷"
+    lore:
+      - "&aSpawns &dpigs&7, basic farm animals for food."
+      - "&aCan be ridden with saddles and a carrot on a stick."
+
+  piglin:
+    name: "&6Piglin Spawner 🧌"
+    lore:
+      - "&eSpawns &6piglins&7, neutral bartering mobs."
+      - "&eWear gold armor to avoid angering them."
+
+  piglin_brute:
+    name: "&6Piglin Brute Spawner 🪓"
+    lore:
+      - "&cSpawns &6piglin brutes&7 that guard bastions."
+      - "&cAlways hostile and hit very hard."
+
+  pillager:
+    name: "&8Pillager Spawner 🏹"
+    lore:
+      - "&cSpawns &8pillagers&7 armed with crossbows."
+      - "&cThey appear in raids and patrols."
+
+  polar_bear:
+    name: "&fPolar Bear Spawner 🐻‍❄️"
+    lore:
+      - "&eSpawns &fpolar bears&7 in cold biomes."
+      - "&eAdults defend cubs aggressively."
+
+  pufferfish:
+    name: "&ePufferfish Spawner 🐡"
+    lore:
+      - "&eSpawns &epufferfish&7 that inflate on contact."
+      - "&eContact inflicts poison and knockback."
+
+  rabbit:
+    name: "&fRabbit Spawner 🐇"
+    lore:
+      - "&aSpawns &frabbits&7, fast but fragile animals."
+      - "&aThey drop hides, meat, and sometimes feet."
+
+  ravager:
+    name: "&8Ravager Spawner 🐂"
+    lore:
+      - "&cSpawns &8ravagers&7, large raid beasts."
+      - "&cThey break crops and deal heavy damage."
+
+  salmon:
+    name: "&cSalmon Spawner 🐟"
+    lore:
+      - "&aSpawns &csalmon&7 in rivers and oceans."
+      - "&aUsed as food and for certain trades."
+
+  sheep:
+    name: "&fSheep Spawner 🐑"
+    lore:
+      - "&aSpawns &fsheep&7 that grow colorful wool."
+      - "&aShearing gives renewable wool without harm."
+
+  shulker:
+    name: "&5Shulker Spawner 📦"
+    lore:
+      - "&cSpawns &5shulkers&7 that shoot levitation bullets."
+      - "&cShells are used to craft shulker boxes."
+
+  silverfish:
+    name: "&7Silverfish Spawner 🪳"
+    lore:
+      - "&cSpawns &7silverfish&7 hidden in infested stone."
+      - "&cBreaking blocks can release groups at once."
+
+  skeleton:
+    name: "&fSkeleton Spawner 💀"
+    lore:
+      - "&cSpawns &fskeletons&7, ranged undead archers."
+      - "&cThey drop bones and arrows for farming."
+
+  skeleton_horse:
+    name: "&fSkeleton Horse Spawner 🐎"
+    lore:
+      - "&eSpawns &fskeleton horses&7, rare undead mounts."
+      - "&eOften obtained from trapped horse events."
+
+  slime:
+    name: "&aSlime Spawner 🧪"
+    lore:
+      - "&cSpawns &aslimes&7 that split into smaller cubes."
+      - "&cSlimeballs are used for pistons and leads."
+
+  sniffer:
+    name: "&aSniffer Spawner 🌱"
+    lore:
+      - "&aSpawns &asniffers&7 that dig up ancient seeds."
+      - "&aGreat for decorative plant collections."
+
+  snow_golem:
+    name: "&fSnow Golem Spawner ⛄"
+    lore:
+      - "&aSpawns &fsnow golems&7 that throw snowballs."
+      - "&eThey leave snow layers on certain blocks."
+
+  spider:
+    name: "&8Spider Spawner 🕷️"
+    lore:
+      - "&cSpawns &8spiders&7 that climb walls."
+      - "&cThey drop string and spider eyes."
+
+  squid:
+    name: "&9Squid Spawner 🦑"
+    lore:
+      - "&aSpawns &9squids&7 in open water."
+      - "&aInk sacs are used for dyes and books."
+
+  stray:
+    name: "&fStray Spawner 🎯"
+    lore:
+      - "&cSpawns &fstrays&7, cold-biome skeleton variants."
+      - "&cTheir arrows inflict slowness."
+
+  strider:
+    name: "&cStrider Spawner 🦵"
+    lore:
+      - "&aSpawns &cstriders&7 that walk on lava."
+      - "&aWarped fungus on a stick steers them."
+
+  tadpole:
+    name: "&aTadpole Spawner 🐣"
+    lore:
+      - "&aSpawns &atadpoles&7 that grow into frogs."
+      - "&aKeep them in water until they mature."
+
+  trader_llama:
+    name: "&fTrader Llama Spawner 🐪"
+    lore:
+      - "&aSpawns &ftrader llamas&7 that follow traders."
+      - "&eBehave like llamas but with trader style."
+
+  tropical_fish:
+    name: "&bTropical Fish Spawner 🐠"
+    lore:
+      - "&aSpawns &btropical fish&7 in many patterns."
+      - "&aBest for aquariums and decoration."
+
+  turtle:
+    name: "&aTurtle Spawner 🐢"
+    lore:
+      - "&aSpawns &aturtles&7 that live on warm beaches."
+      - "&aBaby scutes are used to craft turtle shells."
+
+  vex:
+    name: "&7Vex Spawner 👿"
+    lore:
+      - "&cSpawns &7vexes&7, flying illager summons."
+      - "&cThey pass through blocks and hit hard."
+
+  villager:
+    name: "&aVillager Spawner 🧑‍🌾"
+    lore:
+      - "&aSpawns &avillagers&7, core trading NPCs."
+      - "&aWorkstations define their professions."
+
+  vindicator:
+    name: "&8Vindicator Spawner 🪓"
+    lore:
+      - "&cSpawns &8vindicators&7 with powerful axes."
+      - "&cThey appear in raids and woodland mansions."
+
+  wandering_trader:
+    name: "&bWandering Trader Spawner 🧳"
+    lore:
+      - "&aSpawns &bwandering traders&7 with random trades."
+      - "&eOften appears with two trader llamas."
+
+  warden:
+    name: "&3Warden Spawner 💢"
+    lore:
+      - "&cSpawns &3wardens&7, extremely strong deep dark mobs."
+      - "&cThey sense vibration and deal massive damage."
+
+  witch:
+    name: "&5Witch Spawner 🧪"
+    lore:
+      - "&cSpawns &5witches&7 that throw harmful potions."
+      - "&cUseful for redstone and potion drop farms."
+
+  wither:
+    name: "&8Wither Spawner 💣"
+    lore:
+      - "&cSpawns the &8Wither&7 as a configurable boss."
+      - "&cNether stars from it power beacon setups."
+
+  wither_skeleton:
+    name: "&8Wither Skeleton Spawner 💀"
+    lore:
+      - "&cSpawns &8wither skeletons&7 in nether fortresses."
+      - "&cSkulls from them summon the Wither."
+
+  wolf:
+    name: "&7Wolf Spawner 🐺"
+    lore:
+      - "&eSpawns &7wolves&7, neutral mobs that can be tamed."
+      - "&aBones tame them into loyal combat pets."
+
+  zoglin:
+    name: "&cZoglin Spawner 🧟"
+    lore:
+      - "&cSpawns &czoglins&7, zombified hoglins."
+      - "&cThey attack most other mobs on sight."
+
+  zombie:
+    name: "<gradient:#00ff00:#00aa00>ZOMBIE SPAWNER 🧟</gradient>"
+    lore:
+      - "<gradient:#ff5555:#aa0000>Spawns <green>zombies</green><gray>, common hostile undead.</gray></gradient>"
+      - "<gradient:#ff5555:#aa0000>They can wear armor and carry items.</gradient>"
+
+  zombie_horse:
+    name: "&2Zombie Horse Spawner 🐎"
+    lore:
+      - "&eSpawns &2zombie horses&7 for custom maps."
+      - "&eThey do not spawn naturally in survival."
+
+  zombie_nautilus:
+    name: "&2Zombie Nautilus Spawner 🐚"
+    lore:
+      - "&cSpawns &2zombie nautilus&7 style mobs."
+      - "&cFits ocean-themed challenge arenas."
+
+  zombie_villager:
+    name: "&2Zombie Villager Spawner 🧟"
+    lore:
+      - "&cSpawns &2zombie villagers&7 from infected towns."
+      - "&aCure them with weakness and golden apples."
+
+  zombified_piglin:
+    name: "&6Zombified Piglin Spawner 🐷"
+    lore:
+      - "&eSpawns &6zombified piglins&7, neutral nether mobs."
+      - "&eHitting one angers all nearby."

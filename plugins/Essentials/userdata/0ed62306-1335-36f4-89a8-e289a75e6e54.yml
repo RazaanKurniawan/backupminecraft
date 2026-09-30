@@ -1,0 +1,31 @@
+teleportenabled: true
+teleportauto: false
+godmode: false
+flymode: false
+muted: false
+jailed: false
+ip-address: 176.65.148.136
+afk: false
+socialspy: false
+npc: false
+powertoolsenabled: true
+accepting-pay: true
+baltop-exempt: false
+timestamps:
+  lastteleport: 0
+  lastheal: 0
+  mute: 0
+  jail: 0
+  onlinejail: 0
+  logout: 1790397840777
+  login: 1790397840708
+money: '0'
+last-account-name: Cornbread2100_
+logoutlocation:
+  world: 660c0072-e29b-4866-bea0-7e0e1a168690
+  world-name: world
+  x: 51.5
+  y: 74.0
+  z: 484.5
+  yaw: 0.0
+  pitch: 0.0

@@ -1,0 +1,428 @@
+#*********************** SilkySpawnersX configuration ***********************
+config-version: 1.8 # version of the config file format. Do not change this value.
+#
+# Help improve this plugin by sharing anonymous usage stats with bStats (https://bstats.org).
+# These metrics are lightweight, privacy‑friendly, and make sure the plugin keeps getting better.
+# Set to false if you prefer not to contribute 🥺.
+analytics-data-consent: true
+#
+# 🪲 Enable debug logging (set true for troubleshooting).
+debug: false
+# 🪪 Plugin aliases the plugin will respond to, max 5.
+aliases:
+  - ssx
+#
+#**********************************************
+# 🌍 Worlds where the plugin logic is disabled entirely.
+disabled-worlds:
+  - example_world
+#
+# Tool types required to mine spawners (case insensitive).
+# Examples: "DIAMOND_PICKAXE", "NETHERITE_PICKAXE", "IRON_PICKAXE"
+# ⚠️ Use "NO_TOOL_REQUIRED" to indicate no tool requirement.
+eligible-tools:
+  - "NETHERITE_PICKAXE"
+#
+# Eligible enchantments on the tool to mine spawners, and enchantment levels (case insensitive).
+# If you change this to something other than silk touch I'll hate you >_<'
+# ⚠️ Leave empty to allow ANY enchantment.
+eligible-enchantments:
+  SILK_TOUCH: 1
+#
+# ⚠️ This setting will drop 8 iron bars and 1 spawn egg(if typed) when a spawner is destroyed:
+# example: failed roll drop, no eligible tool, no eligible enchantment/enchantment-level
+drop-iron-bars-and-egg-on-spawner-destroy: false
+#
+# 🎉 XP awarded when a spawner break SUCCESSFULLY drops the spawner item. (Set to 0 to disable XP entirely.)
+xp-on-success: 10
+#
+# ----------- 🪙 XP Farming Protection -----------
+# false: Every successful spawner break gives the XP above.
+# true: Only untagged spawners give XP the first time they are successfully mined.
+#       When a spawner is dropped by mining or dropped by explosion, the resulting spawner gets tagged.
+#       Tagged spawners NEVER pay XP again. This prevents placing/breaking
+#       loops for infinite experience exploits.
+#       Broken/destroyed spawners will ALWAYS drop VANILLA XP, but it doesn't matter since they get destroyed.
+only-untagged-spawners-drop-xp: true
+#
+# ⚠️ This settings will prevent spawner break if no eligible tools, enchantments, or enchantment level requirements are met.
+prevent-spawner-break-if-no-conditions-met: false
+# -------------------------------------------------
+# Quick reference for PERMISSIONS. You will find detailed explanations in each of the sections below.
+# ⚠️ Break:     silkyspawnersx.break.<mob> | silkyspawnersx.break.empty-spawner | silkyspawnersx.break.any | silkyspawnersx.break.*
+# ⚠️ Drop:     silkyspawnersx.drop.<mob> | silkyspawnersx.drop.empty-spawner | silkyspawnersx.drop.any | silkyspawnersx.drop.*
+# Bonus drop:   silkyspawnersx.bonusdrop.<mob>.<±value>     (single winner; final chance clamped 0..100)
+# Place:        silkyspawnersx.place.<mob> | silkyspawnersx.place.empty-spawner | silkyspawnersx.place.any | silkyspawnersx.place.*
+# Craft:        silkyspawnersx.craft.<mob> | silkyspawnersx.craft.empty-spawner | silkyspawnersx.craft.*
+# Craft bonus price:     silkyspawnersx.bonus.craftprice.<mob>.<value>
+# Transform:   silkyspawnersx.transform.<mob> | silkyspawnersx.transform.any | silkyspawnersx.transform.*
+# Transform bonus price:   silkyspawnersx.transform.bonusprice.<mob|*|any>.<value>
+# -------------------------------------------------
+#
+#
+#
+#<<<<<<<<<<<<<<<<<<<<<<<<<<<< 💧 Drop Rate Settings 💧 >>>>>>>>>>>>>>>>>>>#
+# Permissions: silkyspawnersx.break.<mob> | silkyspawnersx.break.empty-spawner | silkyspawnersx.break.any | silkyspawnersx.break.*
+# Global drop rate in percent (0-100)
+global-drop-rate: 100
+#
+# Per-type drop rate overrides Global Drop Rate (keys are Bukkit EntityType names)
+# If a per-type key is present, it is used; otherwise the global-drop-rate applies.
+# Special key 'empty-spawner' overrides the drop rate for empty spawners.
+per-type-drop-rate:
+  # examples:
+  zombie: 100
+  # skeleton: 75
+  # empty-spawner: 20
+#
+# Bonus drop modifiers (via permissions)
+# Grant one of these permissions to add a flat bonus to the player's drop chance for a specific mob:
+# Format per node: silkyspawnersx.bonusdrop.<mob>.<value>
+# Selection rules per mob (including 'empty-spawner'):
+#  - If one or more positive permission values exist for a user, the HIGHEST positive is chosen and ADDED to the base rate.
+#  - Else if one or more negative values exist, the MOST NEGATIVE is chosen and SUBTRACTED from the base rate.
+#  - Additionally: if both positive and negative permission values exist, the positive permission value will override.
+#  - Zero values are ignored.
+# Base rate =  per-type-drop-rate, else global-drop-rate will be used.
+# Final chance = clamp(base + chosenModifier, 0..100).
+# Wildcards:
+#  silkyspawnersx.bonusdrop.*.<value>   (applies to all mobs including empty-spawner)
+#  silkyspawnersx.bonusdrop.any.<value> (alias of *)
+# Examples (global-drop-rate: 60):
+#  silkyspawnersx.bonusdrop.zombie.15              -> final zombie chance 75
+#  silkyspawnersx.bonusdrop.zombie.-20             -> final zombie chance 40
+#  silkyspawnersx.bonusdrop.zombie.15 AND .-20     -> positive wins -> 75
+#  silkyspawnersx.bonusdrop.empty-spawner.-90 with base 80 -> final empty-spawner chance 0 (clamped from -10)
+#
+#
+#
+#<<<<<<<<<<<<<<<<<<<<<<<<<<<< 💎💎💎 Premium Settings Section 💎💎💎 >>>>>>>>>>>>>>>>>>>#
+# These settings require a patreon membership for Silkyspawnersx.
+# Changing these settings without being an active Patreon will have no effect.
+#
+#
+#
+#<<<<<<<<<<<<<<<<<<<<<<<<<<< 🔊 Sound Settings 🔊 >>>>>>>>>>>>>>>>>>>#
+# Sounds played on spawner drop events (success and fail). Leave empty for no sound.
+# Sound volume, e.g. 0.5, is half the volume, 1.0 is full, and 0.0 is silent.
+sound-volume: 0.2
+# Sound names must match valid Bukkit sound enum names.
+# Example: "ENTITY_PLAYER_LEVELUP", "BLOCK_ANVIL_USE", "BLOCK_NOTE_BLOCK_PLING"
+# You can find valid sound enums here: https://jd.papermc.io/paper/26.1.1/org/bukkit/Sound.html?utm_source=chatgpt.com
+sound-on-success-drop:
+  - "ENTITY_PLAYER_LEVELUP"
+sound-on-fail-drop:
+  - "BLOCK_ANVIL_LAND"
+# This will suppress sounds on already mined spawners
+# Configure to true to prevent playing configured sounds when the spawner is tagged as already mined.
+suppress-sounds-on-already-mined-spawners: true
+# Radius for custom sounds to be heard by players when a spawner is destroyed by an explosion (in blocks). Set to -1 for global 0 to disable.
+sound-radius-on-explosion: 50
+#
+#
+#
+#<<<<<<<<<<<<<<<<<<<<<<<<<<<< 💥 Explosion drop rates in percent (0-100) 💥 <<<<<<<<<<<<<<<<<<<<<<<<<<<<
+# Applied when a spawner is destroyed by an explosion (TNT, Creeper, etc.)
+# Numbers higher than 100 are clamped to 100, and lower than 0 are clamped to 0.
+# Set to 0 or remove key to disable explosion drops entirely.
+# Special keys: "empty-spawner" for empty spawners.
+# Global explosion drop rate (applies to all spawners even empty spawners)
+global-explosion-drop-rate: 100
+# Per-mob explosion drop rates override the global explosion drop rate if present.
+explosion-drops:
+  zombie: 80
+#  empty-spawner: 50
+#
+#
+#
+#<<<<<<<<<<<<<<<<<<<<<<<<<<< 📑 Command Execution Settings 📑 >>>>>>>>>>>>>>>>>>>#
+# Commands executed by the console when a spawner is broken (3 conditions: success, fail, and any).
+# Placeholders available in each command line:
+# {player}  -> player name (for player break events only)
+# {mob}     -> entity type in lowercase
+# {world}   -> world name
+# {x},{y},{z} -> block coordinates
+# {entity} -> entity name (for explosions only)
+#
+commands-on-break:
+  commands-on-success:
+    - "broadcast <gradient:#00ff7f:#00c853>{player}</gradient> <gradient:#00e676:#69f0ae>successfully mined a {mob} spawner in {world} at {x}, {y}, {z}</gradient>"
+  commands-on-fail:
+    - "broadcast &6{player} &cfailed to mine a {mob} spawner in {world} at {x},{y},{z}"
+#
+commands-on-explosion-break:
+  commands-on-success:
+    - "broadcast &6{entity} &asuccessfully dropped a {mob} spawner by explosion in {world} at {x}, {y}, {z}"
+  commands-on-fail:
+    - "broadcast <gradient:#ff5252:#b71c1c>{entity}</gradient> <gradient:#ff1744:#ff5252>failed to drop a {mob} spawner by explosion in {world} at {x}, {y}, {z}</gradient>"
+#
+# 🧨 Run commands when a spawner is broken by an explosion?
+execute-commands-on-explosion-break: false
+# This setting will stop commands from running if the blown or broken spawner was already tagged.
+suppress-commands-on-tagged-spawners: true
+# This is the delay in server ticks between each command execution when multiple commands are configured in the same list. Default is 10 ticks (0.5 seconds).
+delay-between-command-execution: 10
+#
+#
+#
+#<<<<<<<<<<<<<<<<<<<<<<<<<<< 💰 Economy Settings 💰 >>>>>>>>>>>>>>>>>>>#
+# Global master toggle for charging money for ANY feature (crafting & transform).
+# Requires Vault + an economy plugin such as EssentialsX.
+# Set false to disable ALL economic charges while still keeping crafting / transform mechanics enabled.
+economy-enabled: false
+# Currency display settings for economy related transactions.
+currency-symbol: "$"
+price-decimals: 2
+#
+#
+#
+#<<<<<<<<<<<<<<<<<<<<<<<<<<< 🛠️ Crafting Settings 🛠️ >>>>>>>>>>>>>>>>>>>#
+# Craft Permissions: silkyspawnersx.craft.<mob> | silkyspawnersx.craft.empty-spawner | silkyspawnersx.craft.*
+# iron-bars = x, spawn-egg = o, nothing = 0:
+# Recepees: Empty spawner:  xxx, x0x, xxx. Typed: xxx, xox, xxx.
+# ❗NOTE ❗ Operators/OPs bypass some crafting restrictions by default. ⚠️ OPs will always be able to craft regardless of gamemode.
+# Enable crafting spawners?
+crafting-enabled: false
+# Allow players in Creative mode to craft spawners (requires permission).
+can-creative-players-craft: false
+# Allow crafting of empty spawners.
+allow-crafting-empty-spawners: false
+#
+global-craft-price: 100000
+#
+# Per-mob base craft price overrides the global-craft-price (before permission price modifiers).
+# Keys are Bukkit EntityType names (lowercase), plus optional 'empty-spawner' for empty spawner crafting.
+per-mob-craft-price-modifiers:
+  # examples:
+  zombie: 2500
+  # skeleton: 7500
+  # empty-spawner: 3000
+#
+# Craft price modifiers (additive surcharge/discount via permissions)
+# Grant one of these permissions to adjust the craft price for a specific mob (including empty-spawner):
+# Format: silkyspawnersx.bonus.craftprice.<mob>.<value>
+# Selection rules per mob:
+#  - If one or more positive permission values exist, the HIGHEST positive is chosen (surcharge added to global-craft-price).
+#  - Else if one or more negative permission values exist, the MOST NEGATIVE is chosen (discount subtracted from global-craft-price).
+#  - Additionally: if both positive and negative permission values exist, the positive permission value will override.
+#  - Zero values are ignored.
+# Final price = per-mob override if present else global-craft-price
+# Wildcards:
+#  silkyspawnersx.bonus.craftprice.*.<value>   (applies to all mobs including empty-spawner)
+#  silkyspawnersx.bonus.craftprice.any.<value> (alias of *)
+# Examples:
+#  global-craft-price: 10000 & silkyspawnersx.bonus.craftprice.zombie.2500  -> final zombie price = 12500
+#  global-craft-price: 10000 & silkyspawnersx.bonus.craftprice.zombie.-3000 -> final zombie price = 7000
+#  Both .-3000 and .2500 present -> positive wins -> 12500
+#  global-craft-price: 4000 & silkyspawnersx.bonus.craftprice.empty-spawner.-5000 -> final empty-spawner price = 0 (clamped)
+#
+#
+#
+#<<<<<<<<<<<<<<<<<<<<<<<<<<< 🧬 Spawner Transform Settings 🧬 >>>>>>>>>>>>>>>>>>>#
+# Turn a placed spawner into a different mob by right‑clicking it with a spawn egg.
+#
+# Allow players to transform spawners using spawn-eggs.
+allow-spawn-egg-transform: false
+# Allow players to transform a spawner held on hand using the command:
+# /ssx transform <mob-type>
+# Permissions needed by this command: silkyspawnersx.command.transform, and silkyspawnersx.command.transform.<mob>
+allow-transform-command: false
+#
+# Permissions required to perform a transform (target mob permission):
+#  - silkyspawnersx.transform.<mob>   (allows transforming TO <mob>)
+#  - silkyspawnersx.transform.any     (allows transforming to any mob)
+#  - silkyspawnersx.transform.*       (full access)
+# If the player lacks permission for the target mob, the transformation is denied and the egg is not consumed.
+#
+# Economy integration for transform costs (requires Vault + an economy plugin such as EssentialsX, and economy-enabled: true).
+# Set to 0 for free transforms.
+global-transform-price: 10000
+#
+# Creative mode: plugin skips transform logic; vanilla behavior applies (no plugin charges)
+#
+# Per-mob price overrides the global-transform-price (before permission modifiers).
+# Keys are Bukkit EntityType names (lowercase). Pricing is based on the TARGET mob only.
+per-mob-transform-price-modifiers:
+  # examples:
+  zombie: 10000
+  # skeleton: 2500
+  # empty-spawner: 10000
+#
+# Pricing modifiers via permissions:
+#  Format: silkyspawnersx.transform.bonusprice.<mob|*|any>.<value>
+#  Selection per mob:
+#   - If one or more positive permission values exist, the HIGHEST positive is chosen (surcharge added to base).
+#   - Else if one or more negative permission values exist, the MOST NEGATIVE is chosen (discount subtracted from base).
+#   - Additionally: if both positive and negative permission values exist, the positive permission value will override.
+#   - Zero values are ignored.
+#  Final price = per-mob override if present else global-transform-price
+#  Wildcards:
+#    silkyspawnersx.transform.bonusprice.*.<value>   (applies to all mobs)
+#    silkyspawnersx.transform.bonusprice.any.<value> (alias of *)
+#  Examples (global-transform-price: 2000):
+#   silkyspawnersx.transform.bonusprice.zombie.1500   -> final zombie transform = 3500
+#   silkyspawnersx.transform.bonusprice.zombie.-500   -> final zombie transform = 1500
+#   both .-500 and .1500 present                -> positive wins -> 3500
+#
+#
+#<<<<<<<<<<<<<<<<<<<<<<<<<<<< 💎💎💎 End For Premium Settings Section 💎💎💎 >>>>>>>>>>>>>>>>>>>#
+#
+#
+#
+#<<<<<<<<<<<<<<<<<<<<<<<<<<< 💬 Messages 💬 >>>>>>>>>>>>>>>>>>>#
+# Global placeholders(except transform command section): {player}, {mob}, {world}, {x}, {y}, {z}.
+#  Break section placeholders:
+#    {held-tool} -> the tool held by the player when mining.
+#    {eligible-tools} -> list of eligible tools for mining dropping spawners.
+#    {tool-enchantments} -> list of enchantments on the tool held by the player when mining.
+#    {eligible-enchantments} -> list of eligible enchantments for mining dropping spawners.
+#    {mob} -> target mob name in lowercase (or 'empty-spawner' where applicable)
+#    {drop-rate-roll} -> the random roll that was made to determine drop success.
+#    {effective-drop-rate} -> the player's effective drop rate after all modifiers are applied.
+#  Craft section placeholders:
+#    {price} -> the price required for the crafting action.
+#  Transform section placeholders:
+#    {price} -> the price required for the transform action.
+#  Transform command placeholders:
+#    {requested-type} -> The mob type the user was trying to transform to.
+#    {held-type} -> The mob type of the held spawner/s.
+#    {order-amount} -> the amount of spawners the player has requested to transform.
+#    {held-spawner-amount} -> how many spawners the player is holding on its hand.
+break-messages:
+  no-permission-to-break: |
+    <gradient:#ff4d4d:#b30000>You don't have permission to break <white>{mob}</white> spawners!</gradient>
+
+  # Delete this message bellow to send no message
+  failed-drop-chance: |
+    <gradient:#ff4d4d:#b30000>You ran out of luck and failed to mine this <white>{mob}</white> spawner.</gradient>
+    <gradient:#ff4d4d:#b30000>Your drop chance was <white>{effective-drop-rate}</white>/<white>{drop-rate-roll}</white></gradient>
+  # Delete this message bellow to send no message
+  no-eligible-tools: |
+    <gradient:#ff4d4d:#b30000>You failed to mine this <white>{mob}</white> spawner due to lack of eligible tools!</gradient>
+    <gradient:#ff4d4d:#b30000>Eligible tools: <white>{eligible-tools}</white></gradient>
+  # Delete this message bellow to send no message
+  no-eligible-enchantments: |
+    <gradient:#ff4d4d:#b30000>You failed to mine this <white>{mob}</white> spawner due to lack of eligible enchantments!</gradient>
+    <gradient:#ff4d4d:#b30000>Eligible enchantments: <white>{eligible-enchantments}</white></gradient>
+  # Delete this message bellow to send no message
+  no-required-enchantment-level: |
+    <gradient:#ff4d4d:#b30000>You failed to mine this <white>{mob}</white> spawner due to insufficient enchantment level on your <white>{held-tool}</white>!</gradient>
+    <gradient:#ff4d4d:#b30000>Required enchantments: <white>{eligible-enchantments}</white></gradient>
+  # Delete this message bellow to send no message
+  no-drop-permission: |
+    <gradient:#ff4d4d:#b30000>You don't have permission to receive drops from this <white>{mob}</white> spawner!</gradient>
+
+place-messages:
+  no-permission-to-place:
+    <gradient:#ff4d4d:#b30000>You don't have permission to place
+    <white>{mob}</white> spawners!</gradient>
+
+craft-messages:
+  no-permission-to-craft: |
+    <gradient:#ff4d4d:#b30000>You don't have permission to craft <white>{mob}</white> spawners!</gradient>
+  craft-charged: |
+    <gradient:#4dff88:#e6c300>Charged <yellow>{price}</yellow> for crafting <white>{order-amount}</white> <white>{mob}</white> {spawner/s}.</gradient>
+  craft-insufficient-funds: |
+    <gradient:#ff4d4d:#b30000>You need <yellow>{price}</yellow> to craft <white>{order-amount}</white> <white>{mob}</white> {spawner/s}.</gradient>
+  cannot-craft-while-in-creative: |
+    <gradient:#ff4d4d:#b30000>You cannot craft spawners in creative mode!</gradient>
+  cannot-craft-empty-spawner: |
+    <gradient:#ff4d4d:#b30000>This server has disabled crafting of empty spawners!</gradient>
+
+transform-with-egg-messages:
+  transform-disabled: |
+    <gradient:#ff4d4d:#b30000>Sorry but this server does not allow spawner transformations with eggs!</gradient>
+  no-permission-to-transform: |
+    <gradient:#ff4d4d:#b30000>You don't have permission
+    to transform spawners to <white>{mob}</white>!</gradient>
+  transform-success: |
+    <gradient:#4dff88:#e6c300>Charged <yellow>{price}</yellow> for
+    successfully transforming the spawner to <white>{mob}</white>.</gradient>
+  transform-insufficient-funds: |
+    <gradient:#ff4d4d:#b30000>You need <yellow>{price}</yellow>
+    to transform the spawner to <white>{mob}</white>.</gradient>
+  transform-same-type: <gradient:#ff4d4d:#b30000>The spawner is already a <yellow><bold>{mob} spawner</bold></yellow>!</gradient>
+
+transform-command-messages:
+  item-in-hand-is-not-a-spawner: |
+    <gradient:#ff4d4d:#b30000>Sorry but you are not holding a spawner in your main hand!
+    You can only use this command while holding a spawner in your main hand, please try again!</gradient>
+  no-permission-to-transform: |
+    <gradient:#ff4d4d:#b30000>You don't have permission
+    to transform spawners to <white>{requested-type}</white>!</gradient>
+  transform-success: |
+    <gradient:#4dff88:#e6c300>Charged <yellow>{price}</yellow> for
+    successfully transforming the spawner from {held-type} to <white>{requested-type}</white>.</gradient>
+  transform-insufficient-funds: |
+    <gradient:#ff4d4d:#b30000>You need <yellow>{price}</yellow>
+    to transform the spawner from {held-type} to <white>{requested-type}</white>.</gradient>
+  transform-same-type: |
+    <gradient:#ff4d4d:#b30000>The spawner is already a <yellow><bold>{requested-type} spawner</bold></yellow>!</gradient>
+  invalid-order-amount: |
+    <gradient:#ff4d4d:#b30000>Sorry but you can't transform more spawners than what you're holding on your hand!</gradient>
+
+# -----------------------------------------------------------
+#  ⚠️ PLEASE READ THIS SUMMARY OF THE PERMISSIONS! ⚠️
+# -----------------------------------------------------------
+#⚠️ Breaking permissions:
+# - silkyspawnersx.break.<mob>    -> Break that spawner type (e.g., silkyspawnersx.break.zombie)
+# - silkyspawnersx.break.empty-spawner  -> Allows the breaking of empty spawners
+# - silkyspawnersx.break.any      -> Break any spawner type (alternative wildcard)
+# - silkyspawnersx.break.*        -> Full access (OP by default)
+#
+#⚠️ Dropping permissions:
+# - silkyspawnersx.drop.<mob>    -> Allows dropping a spawner when mined (e.g., silkyspawnersx.drop.zombie)
+# - silkyspawnersx.drop.empty-spawner  -> Allows drop of empty spawners when mined
+# - silkyspawnersx.drop.any      -> Drop any spawner type (alternative wildcard)
+# - silkyspawnersx.drop.*        -> Full access (OP by default)
+#
+# Bonus Drop Permissions:
+# - silkyspawnersx.bonusdrop.<mob>.<value>
+#   Selection: highest positive bonus OR most negative penalty (single winner). Value added (or subtracted) from base rate then clamped 0..100.
+#   Example: global-drop-rate 60 & silkyspawnersx.bonusdrop.zombie.15 -> final 75.
+#   Example: global-drop-rate 60 & silkyspawnersx.bonusdrop.zombie.-20 -> final 40.
+#   Both present -> positive wins -> 75.
+#
+# Placing permissions:
+# - silkyspawnersx.place.<mob>    -> Place that spawner type (e.g., silkyspawnersx.place.zombie)
+# - silkyspawnersx.place.empty-spawner  -> Allows the placing of empty spawners
+#
+# Crafting permissions:
+# - silkyspawnersx.craft.<mob> -> Craft that spawner type via recipe
+# - silkyspawnersx.craft.empty-spawner -> Craft an empty spawner (no egg needed when allowed by config)
+# - silkyspawnersx.craft.*     -> Craft any spawner type EVEN empty spawners
+#
+# Crafting bonus price permissions:
+# - silkyspawnersx.bonus.craftprice.<mob>.<value>
+#   Selection: highest positive surcharge OR most negative discount (single winner, not summed). Applied to base (per-mob override if present, else global-craft-price). Clamped >=0.
+#   Example: silkyspawnersx.bonus.craftprice.zombie.2500 with global-craft-price 10000 -> final 12500.
+#   Example: silkyspawnersx.bonus.craftprice.zombie.-3000 with global-craft-price 10000 -> final 7000.
+#
+# Transform permissions:
+# - silkyspawnersx.transform.<mob>    -> Transform TO that mob
+# - silkyspawnersx.transform.any      -> Transform TO any mob
+# - silkyspawnersx.transform.*        -> Full transform access
+#   NOTE: Having ONLY a bonusprice node NEVER grants transform permission.
+#
+# Transform bonus price permissions:
+# - silkyspawnersx.transform.bonusprice.<mob|*|any>.<value>
+#   Selection: highest positive surcharge OR most negative discount (single winner, not summed). Applied to base (per-mob override if present, else global-transform-price). Clamped >=0.
+#   Example: silkyspawnersx.transform.bonusprice.zombie.1500 with global-transform-price 2000 -> final 3500.
+#   Example: silkyspawnersx.transform.bonusprice.zombie.-500 with global-transform-price 2000 -> final 1500.
+#   Both .-500 and .1500 present -> positive wins -> 3500.
+#
+# Admin permissions:
+# - silkyspawnersx.admin.reload     -> /ssx reload
+# - silkyspawnersx.admin.give       -> /ssx give
+# - silkyspawnersx.admin.set.droprate    -> /ssx set.droprate
+# - silkyspawnersx.admin.debug      -> /ssx debug
+# - silkyspawnersx.admin.dumpconfig -> /ssx dumpconfig
+#
+# Notes:
+# - If a world is listed under disabled-worlds, plugin logic is skipped in said world entirely.
+# - Modifier selection is SINGLE-WINNER per category per mob: highest positive or most negative. They do not stack across multiple permission nodes.
+#   Example: silkyspawnersx.bonusdrop.zombie.5 AND silkyspawnersx.bonusdrop.zombie.10 -> final bonus = 10 only.
+# - ❗REMEMBER❗ ANY permission can be negated by prefixing it with a "-" e.g., - -silkyspawnersx.break.zombie to prevent mining zombie spawners.
+#
+# >>>>>>>>>>> If you have any questions or issues, please open up a ticket in my Discord Server: https://discord.com/invite/zRq7zVgKKR
+# This is the end of the configuration file, finally 😛. Thanks for using SilkyspawnersX! ~SirMeliodaz 😙
