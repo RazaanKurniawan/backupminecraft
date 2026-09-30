@@ -1,0 +1,39 @@
+{
+  "stats": {
+    "minecraft:custom": {
+      "minecraft:time_since_rest": 7191,
+      "minecraft:walk_one_cm": 10758,
+      "minecraft:leave_game": 3,
+      "minecraft:mob_kills": 1,
+      "minecraft:damage_taken": 120,
+      "minecraft:play_time": 7191,
+      "minecraft:damage_dealt": 100,
+      "minecraft:jump": 204,
+      "minecraft:time_since_death": 7191,
+      "minecraft:sprint_one_cm": 32710,
+      "minecraft:fall_one_cm": 7151,
+      "minecraft:total_world_time": 7191,
+      "minecraft:fly_one_cm": 22180,
+      "minecraft:crouch_one_cm": 20,
+      "minecraft:sneak_time": 2,
+      "minecraft:climb_one_cm": 1009
+    },
+    "minecraft:picked_up": {
+      "minecraft:gravel": 4,
+      "minecraft:leather": 2,
+      "minecraft:beef": 3
+    },
+    "minecraft:mined": {
+      "minecraft:gravel": 4,
+      "minecraft:birch_leaves": 2,
+      "minecraft:jungle_leaves": 2
+    },
+    "minecraft:used": {
+      "minecraft:beef": 1
+    },
+    "minecraft:killed": {
+      "minecraft:cow": 1
+    }
+  },
+  "DataVersion": 4903
+}
